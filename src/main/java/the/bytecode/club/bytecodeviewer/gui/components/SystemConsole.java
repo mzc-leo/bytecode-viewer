@@ -18,8 +18,6 @@
 
 package the.bytecode.club.bytecodeviewer.gui.components;
 
-import java.io.Serial;
-
 /**
  * A simple console GUI.
  *
@@ -32,7 +30,6 @@ public class SystemConsole extends JFrameConsolePrintStream
     {
         super(title);
     }
-
-    @Serial
+    
     private static final long serialVersionUID = -6666940545499937508L;
 }

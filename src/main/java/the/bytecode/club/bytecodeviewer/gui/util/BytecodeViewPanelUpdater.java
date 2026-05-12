@@ -278,14 +278,19 @@ public class BytecodeViewPanelUpdater implements Runnable
                         {
                             int setLine = -1;
 
-                            RSyntaxTextArea area = switch (i)
+                            RSyntaxTextArea area = null;
+                            switch (i)
                             {
-                                case 0: yield viewer.bytecodeViewPanel1.updateThread.updateUpdaterTextArea;
-                                case 1: yield viewer.bytecodeViewPanel2.updateThread.updateUpdaterTextArea;
-                                case 2: yield viewer.bytecodeViewPanel3.updateThread.updateUpdaterTextArea;
-                                default:
-                                     yield __P__./*__p0__*/nullp();
-                            };
+                                case 0:
+                                    area = viewer.bytecodeViewPanel1.updateThread.updateUpdaterTextArea;
+                                    break;
+                                case 1:
+                                    area = viewer.bytecodeViewPanel2.updateThread.updateUpdaterTextArea;
+                                    break;
+                                case 2:
+                                    area = viewer.bytecodeViewPanel3.updateThread.updateUpdaterTextArea;
+                                    break;
+                            }
 
                             if (area != null)
                             {
@@ -357,20 +362,25 @@ public class BytecodeViewPanelUpdater implements Runnable
                     methodsList.addItem(line);
 
                 methodsList.setRenderer(new MethodsRenderer(this));
-                methodsList.addActionListener(_ ->
+                methodsList.addActionListener(e ->
                 {
                     int line = (int) Objects.requireNonNull(methodsList.getSelectedItem());
 
-                    RSyntaxTextArea area = switch (bytecodeViewPanel.panelIndex)
+                    RSyntaxTextArea area = null;
+                    switch (bytecodeViewPanel.panelIndex)
                     {
-                        case 0: yield viewer.bytecodeViewPanel1.updateThread.updateUpdaterTextArea;
+                        case 0:
+                            area = viewer.bytecodeViewPanel1.updateThread.updateUpdaterTextArea;
+                            break;
 
-                        case 1: yield viewer.bytecodeViewPanel2.updateThread.updateUpdaterTextArea;
+                        case 1:
+                            area = viewer.bytecodeViewPanel2.updateThread.updateUpdaterTextArea;
+                            break;
 
-                        case 2: yield viewer.bytecodeViewPanel3.updateThread.updateUpdaterTextArea;
-                        default:
-                             yield __P__./*__p0__*/nullp();
-                    };
+                        case 2:
+                            area = viewer.bytecodeViewPanel3.updateThread.updateUpdaterTextArea;
+                            break;
+                    }
 
                     if (area != null)
                         ClassViewer.selectMethod(area, line);
@@ -717,7 +727,7 @@ public class BytecodeViewPanelUpdater implements Runnable
                         highlighterEx.addMarkedOccurrenceHighlight(startOffset, endOffset, new SmartHighlightPainter());
                     }
                 }
-                catch (Exception _)
+                catch (Exception ignored)
                 {
                 }
             }

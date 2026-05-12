@@ -132,7 +132,7 @@ public class DecompilerSelectionPane
         while (it.hasMoreElements())
         {
             AbstractButton button = it.nextElement();
-            button.addActionListener(_ ->
+            button.addActionListener((event) ->
             {
                 if (Configuration.bootState != BootState.GUI_SHOWING)
                     return;

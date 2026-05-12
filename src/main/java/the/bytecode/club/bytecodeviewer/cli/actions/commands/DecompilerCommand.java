@@ -31,6 +31,6 @@ public class DecompilerCommand extends CLICommand
             "-clean                        Deletes the BCV directory",
             "-english                      Forces English language translations"
         })
-            IO.println(s);
+            System.out.println(s);
     }
 }

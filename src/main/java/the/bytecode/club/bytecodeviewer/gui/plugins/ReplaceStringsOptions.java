@@ -25,7 +25,6 @@ import the.bytecode.club.bytecodeviewer.resources.IconResources;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.Serial;
 
 /**
  * The UI for replace strings plugin.
@@ -88,7 +87,7 @@ public class ReplaceStringsOptions extends JFrame
         chckbxNewCheckBox.setToolTipText("If it's unticked, it will check if the string equals, if its ticked it will check if" + " it contains, then replace the original LDC part of the string.");
         chckbxNewCheckBox.setBounds(6, 7, 232, 23);
         getContentPane().add(chckbxNewCheckBox);
-        btnNewButton.addActionListener(_ ->
+        btnNewButton.addActionListener(arg0 ->
         {
             PluginManager.runPlugin(new ReplaceStrings(originalLDC.getText(), newLDC.getText(), classToReplaceIn.getText(), chckbxNewCheckBox.isSelected()));
             dispose();
@@ -97,7 +96,6 @@ public class ReplaceStringsOptions extends JFrame
         this.setLocationRelativeTo(null);
     }
 
-    @Serial
     private static final long serialVersionUID = -2662514582647810868L;
     private final JTextField originalLDC;
     private final JTextField newLDC;

@@ -77,7 +77,7 @@ public class SmaliAssembler extends AbstractCompiler
 
         File current = Apk2Jar.obtainImpl().apk2Folder(tempDex);
 
-        IO.println("Temporary dex: " + tempDex.getAbsolutePath());
+        System.out.println("Temporary dex: " + tempDex.getAbsolutePath());
 
         try
         {
@@ -97,12 +97,12 @@ public class SmaliAssembler extends AbstractCompiler
                     }
                 }
 
-                IO.println("Saved as: " + outputClass.getAbsolutePath());
+                System.out.println("Saved as: " + outputClass.getAbsolutePath());
 
                 //return the assembled file
                 return FileUtils.readFileToByteArray(outputClass);
             }
-            catch (java.lang.NullPointerException _)
+            catch (java.lang.NullPointerException ignored)
             {
             }
         }

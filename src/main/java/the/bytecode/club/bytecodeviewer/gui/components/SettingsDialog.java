@@ -61,7 +61,7 @@ public class SettingsDialog extends JScrollPane
 
             //force unselect after a selection has been made
             //this fixes a graphical bug from forcing menu items on non-menus
-            menuItem.addActionListener(_ -> unselectAll());
+            menuItem.addActionListener(e -> unselectAll());
         }
 
         this.options.addAll(options);

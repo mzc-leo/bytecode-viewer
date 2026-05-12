@@ -39,8 +39,9 @@ class FieldAccessParser
         Value fieldValue = new Value(expr.getName(), fieldRange);
 
         Expression scope = expr.getScope();
-        if (scope instanceof NameExpr nameExpr)
+        if (scope instanceof NameExpr)
         {
+            NameExpr nameExpr = (NameExpr) scope;
             Range scopeRange = nameExpr.getRange().orElse(null);
             if (scopeRange == null)
                 return;
@@ -85,8 +86,9 @@ class FieldAccessParser
         Expression scope = expr.getScope();
 
         // Ex. Clazz.field -> Clazz or c.field -> c
-        if (scope instanceof NameExpr nameExpr)
+        if (scope instanceof NameExpr)
         {
+            NameExpr nameExpr = (NameExpr) scope;
             Range scopeRange = nameExpr.getRange().orElse(null);
             if (scopeRange == null)
                 return;
@@ -101,7 +103,7 @@ class FieldAccessParser
                 // Field
                 putFieldResolvedValues(container, expr, nameExpr, fieldValue);
             }
-            catch (UnsolvedSymbolException _)
+            catch (UnsolvedSymbolException ignore)
             {
                 try
                 {
@@ -113,8 +115,9 @@ class FieldAccessParser
                 }
             }
         } // Ex. this.field
-        else if (scope instanceof ThisExpr thisExpr)
+        else if (scope instanceof ThisExpr)
         {
+            ThisExpr thisExpr = (ThisExpr) scope;
             try
             {
                 putFieldResolvedValues(container, expr, thisExpr, fieldValue);
@@ -124,8 +127,9 @@ class FieldAccessParser
                 printException(expr, e);
             }
         }
-        else if (scope instanceof EnclosedExpr enclosedExpr)
+        else if (scope instanceof EnclosedExpr)
         {
+            EnclosedExpr enclosedExpr = (EnclosedExpr) scope;
             try
             {
                 putFieldResolvedValues(container, expr, enclosedExpr, fieldValue);
@@ -178,8 +182,9 @@ class FieldAccessParser
 
         Expression scope = expr.getScope();
 
-        if (scope instanceof NameExpr nameExpr)
+        if (scope instanceof NameExpr)
         {
+            NameExpr nameExpr = (NameExpr) scope;
             Range scopeRange = nameExpr.getRange().orElse(null);
             if (scopeRange == null)
                 return;
@@ -190,7 +195,7 @@ class FieldAccessParser
             {
                 putClassResolvedValues(container, expr, nameExpr, scopeValue, fieldValue);
             }
-            catch (UnsolvedSymbolException _)
+            catch (UnsolvedSymbolException ignore)
             {
                 try
                 {
@@ -202,8 +207,9 @@ class FieldAccessParser
                 }
             }
         }
-        else if (scope instanceof ThisExpr thisExpr)
+        else if (scope instanceof ThisExpr)
         {
+            ThisExpr thisExpr = (ThisExpr) scope;
             try
             {
                 putFieldResolvedValues(container, expr, thisExpr, fieldValue);

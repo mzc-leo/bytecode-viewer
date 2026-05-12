@@ -104,7 +104,7 @@ public class JavapDisassembler extends AbstractDecompiler
                     "-constants", //Shows static final constants
                     tempClassFile.getAbsolutePath()});
             }
-            catch (InvocationTargetException _)
+            catch (InvocationTargetException e)
             {
                 //expected warning behaviour on JDK-15
             }
@@ -119,7 +119,7 @@ public class JavapDisassembler extends AbstractDecompiler
             //return output
             return sysOutBuffer.getTextAreaOutputStreamOut().getBuffer().toString();
         }
-        catch (IllegalAccessException _)
+        catch (IllegalAccessException e)
         {
             //TODO fallback using CLI (External Process API)
 

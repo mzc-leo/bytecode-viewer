@@ -25,7 +25,6 @@ import the.bytecode.club.bytecodeviewer.translation.TranslatedStrings;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
-import java.io.Serial;
 
 import static the.bytecode.club.bytecodeviewer.Configuration.language;
 
@@ -59,6 +58,5 @@ public class AboutWindow extends JFrame
         this.setLocationRelativeTo(null);
     }
 
-    @Serial
     private static final long serialVersionUID = -8230501978224923296L;
 }

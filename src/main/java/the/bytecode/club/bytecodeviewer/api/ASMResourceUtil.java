@@ -58,8 +58,9 @@ public final class ASMResourceUtil
                 MethodNode m = (MethodNode) o;
                 for (AbstractInsnNode i : m.instructions.toArray())
                 {
-                    if (i instanceof FieldInsnNode field)
+                    if (i instanceof FieldInsnNode)
                     {
+                        FieldInsnNode field = (FieldInsnNode) i;
 
                         if (field.owner.equals(originalParentName)
                             && field.name.equals(originalFieldName)
@@ -88,8 +89,9 @@ public final class ASMResourceUtil
                 MethodNode m = (MethodNode) o;
                 for (AbstractInsnNode i : m.instructions.toArray())
                 {
-                    if (i instanceof MethodInsnNode mi)
+                    if (i instanceof MethodInsnNode)
                     {
+                        MethodInsnNode mi = (MethodInsnNode) i;
                         if (mi.owner.equals(originalParentName)
                             && mi.name.equals(originalMethodName)
                             && mi.desc.equals(originalMethodDesc))
@@ -176,21 +178,24 @@ public final class ASMResourceUtil
 
                 for (AbstractInsnNode i : m.instructions.toArray())
                 {
-                    if (i instanceof TypeInsnNode t)
+                    if (i instanceof TypeInsnNode)
                     {
+                        TypeInsnNode t = (TypeInsnNode) i;
                         if (t.desc.equals(oldName))
                             t.desc = newName;
                     }
 
-                    if (i instanceof MethodInsnNode mi)
+                    if (i instanceof MethodInsnNode)
                     {
+                        MethodInsnNode mi = (MethodInsnNode) i;
                         if (mi.owner.equals(oldName))
                             mi.owner = newName;
                         mi.desc = mi.desc.replace(oldName, newName);
                     }
 
-                    if (i instanceof FieldInsnNode fi)
+                    if (i instanceof FieldInsnNode)
                     {
+                        FieldInsnNode fi = (FieldInsnNode) i;
                         if (fi.owner.equals(oldName))
                             fi.owner = newName;
                         fi.desc = fi.desc.replace(oldName, newName);

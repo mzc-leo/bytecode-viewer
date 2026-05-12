@@ -25,6 +25,6 @@ public class CleanCommand extends CLICommand
     {
         new File(Constants.getBCVDirectory()).delete();
 
-        IO.println("BCV Directory Deleted - Exiting...");
+        System.out.println("BCV Directory Deleted - Exiting...");
     }
 }

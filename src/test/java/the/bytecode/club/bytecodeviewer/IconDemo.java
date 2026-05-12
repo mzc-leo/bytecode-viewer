@@ -12,7 +12,7 @@ import java.awt.*;
 public class IconDemo
 {
 
-    void main()
+    public static void main(String[] args)
     {
         SwingUtilities.invokeLater(() ->
         {
@@ -29,7 +29,7 @@ public class IconDemo
                 if (LAFTheme.SYSTEM.equals(theme))
                     item.setSelected(true);
                 lafGroup.add(item);
-                item.addActionListener(_ -> switchToLaf(theme));
+                item.addActionListener(e -> switchToLaf(theme));
                 menu.add(item);
             }
 

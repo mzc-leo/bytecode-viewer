@@ -91,8 +91,9 @@ public class CodeSequenceDiagram extends Plugin
                 testX += (int) (font.getStringBounds(mIdentifier, frc).getWidth()) + 60;
                 for (AbstractInsnNode i : m.instructions.toArray())
                 {
-                    if (i instanceof MethodInsnNode mi)
+                    if (i instanceof MethodInsnNode)
                     {
+                        MethodInsnNode mi = (MethodInsnNode) i;
                         String identifier = mi.owner + "." + mi.name + mi.desc;
                         Object node2 = graph.insertVertex(parent, null, identifier, testX, testY, identifier.length() * 5, 30);
                         testX += (int) (font.getStringBounds(identifier, frc).getWidth()) + 60;

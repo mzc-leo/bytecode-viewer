@@ -19,8 +19,9 @@ class ArrayParser
     static void parseAccess(CompilationUnit compilationUnit, ArrayAccessExpr expr, ClassFileContainer container)
     {
         Expression valueExp = expr.getName();
-        if (valueExp instanceof NameExpr nameExpr)
+        if (valueExp instanceof NameExpr)
         {
+            NameExpr nameExpr = (NameExpr) valueExp;
             CallableDeclaration<?> method = findMethodForExpression(expr, compilationUnit);
             if (method == null)
             {
@@ -42,8 +43,9 @@ class ArrayParser
         }
 
         Expression indexExp = expr.getIndex();
-        if (indexExp instanceof NameExpr nameExpr)
+        if (indexExp instanceof NameExpr)
         {
+            NameExpr nameExpr = (NameExpr) indexExp;
             CallableDeclaration<?> method = findMethodForExpression(expr, compilationUnit);
             if (method == null)
                 method = findConstructorForExpression(expr, compilationUnit);
@@ -68,8 +70,9 @@ class ArrayParser
     {
         expr.getLevels().forEach(level -> {
             Expression dimensionExpr = level.getDimension().orElse(null);
-            if (dimensionExpr instanceof NameExpr nameExpr)
+            if (dimensionExpr instanceof NameExpr)
             {
+                NameExpr nameExpr = (NameExpr) dimensionExpr;
                 CallableDeclaration<?> method = findMethodForExpression(expr, compilationUnit);
                 if (method == null)
                     method = findConstructorForExpression(expr, compilationUnit);
@@ -94,8 +97,9 @@ class ArrayParser
                                         ClassFileContainer container)
     {
         expr.getValues().forEach(value -> {
-            if (value instanceof NameExpr nameExpr)
+            if (value instanceof NameExpr)
             {
+                NameExpr nameExpr = (NameExpr) value;
                 CallableDeclaration<?> method = findMethodForExpression(expr, compilationUnit);
                 if (method == null)
                     method = findConstructorForExpression(expr, compilationUnit);

@@ -23,8 +23,6 @@ import the.bytecode.club.bytecodeviewer.gui.components.SystemConsole;
 import the.bytecode.club.bytecodeviewer.plugin.PluginManager;
 import the.bytecode.club.bytecodeviewer.translation.TranslatedStrings;
 
-import java.io.Serial;
-
 /**
  * A simple console GUI.
  *
@@ -58,6 +56,5 @@ public class PluginConsole extends SystemConsole
         super.setVisible(visible);
     }
 
-    @Serial
     private static final long serialVersionUID = -6556940545421437508L;
 }

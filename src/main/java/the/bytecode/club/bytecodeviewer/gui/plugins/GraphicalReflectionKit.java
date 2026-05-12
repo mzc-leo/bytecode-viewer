@@ -22,7 +22,6 @@ import the.bytecode.club.bytecodeviewer.resources.IconResources;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.Serial;
 
 /**
  * A graphical way to execute reflection.
@@ -51,6 +50,5 @@ public class GraphicalReflectionKit extends JFrame
         tabbedPane.addTab("Cast Field", null, panel_2, null);
     }
 
-    @Serial
     private static final long serialVersionUID = 6728356108271228236L;
 }

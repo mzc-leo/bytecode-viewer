@@ -17,10 +17,7 @@
 package the.bytecode.club.bytecodeviewer.util;
 
 import java.net.URI;
-import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -37,7 +34,7 @@ public class JRTExtractor
     {
         FileSystem fs = FileSystems.getFileSystem(URI.create("jrt:/"));
 
-        try (ZipOutputStream zipStream = new ZipOutputStream(Files.newOutputStream(Path.of(path)));
+        try (ZipOutputStream zipStream = new ZipOutputStream(Files.newOutputStream(Paths.get(path)));
              Stream<Path> stream = Files.walk(fs.getPath("/")))
         {
             stream.forEach(p ->
@@ -51,12 +48,12 @@ public class JRTExtractor
 
                     List<String> list = new ArrayList<>();
                     p.iterator().forEachRemaining(p2 -> list.add(p2.toString()));
-                    assert list.removeFirst().equals("modules");
+                    assert list.remove(0).equals("modules");
 
-                    if (!list.getLast().equals("module-info.class"))
-                        list.removeFirst();
+                    if (!list.get(list.size() - 1).equals("module-info.class"))
+                        list.remove(0);
 
-                    list.removeFirst();
+                    list.remove(0);
                     String outPath = String.join("/", list);
 
                     if (!outPath.endsWith("module-info.class"))

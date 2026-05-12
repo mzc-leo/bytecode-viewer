@@ -126,7 +126,7 @@ public class MyErrorStripe extends JPanel
             {
                 line = textArea.getLineOfOffset(range.getStartOffset());
             }
-            catch (BadLocationException _)
+            catch (BadLocationException e)
             {
                 continue;
             }
@@ -205,8 +205,9 @@ public class MyErrorStripe extends JPanel
         {
             Component source = (Component) e.getSource();
 
-            if (source instanceof Marker m)
+            if (source instanceof MyErrorStripe.Marker)
             {
+                Marker m = (Marker) source;
                 m.mouseClicked(e);
                 return;
             }
@@ -221,7 +222,7 @@ public class MyErrorStripe extends JPanel
                     textArea.setCaretPosition(offset);
                     RSyntaxUtilities.selectAndPossiblyCenter(textArea, new DocumentRange(offset, offset), false);
                 }
-                catch (BadLocationException _)
+                catch (BadLocationException exception)
                 {
                     UIManager.getLookAndFeel().provideErrorFeedback(textArea);
                 }
@@ -271,7 +272,7 @@ public class MyErrorStripe extends JPanel
             {
                 return textArea.getLineOfOffset(range.getStartOffset()) + 1;
             }
-            catch (BadLocationException _)
+            catch (BadLocationException e)
             {
                 return 0;
             }
@@ -364,7 +365,7 @@ public class MyErrorStripe extends JPanel
 
         protected void mouseClicked(MouseEvent e)
         {
-            ParserNotice pn = notices.getFirst();
+            ParserNotice pn = notices.get(0);
             int offs = pn.getOffset();
             int len = pn.getLength();
 
@@ -383,7 +384,7 @@ public class MyErrorStripe extends JPanel
                     textArea.getFoldManager().ensureOffsetNotInClosedFold(offs);
                     textArea.setCaretPosition(offs);
                 }
-                catch (BadLocationException _) // Never happens
+                catch (BadLocationException ble) // Never happens
                 {
                     UIManager.getLookAndFeel().provideErrorFeedback(textArea);
                 }
@@ -423,7 +424,7 @@ public class MyErrorStripe extends JPanel
 
         public void updateLocation()
         {
-            int line = notices.getFirst().getLine();
+            int line = notices.get(0).getLine();
             int y = lineToY(line - 1, null);
             setLocation(2, y);
         }

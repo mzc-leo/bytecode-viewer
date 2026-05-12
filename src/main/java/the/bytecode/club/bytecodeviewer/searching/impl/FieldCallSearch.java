@@ -62,8 +62,9 @@ public class FieldCallSearch extends MethodCallSearch
             final InsnList insnlist = method.instructions;
             for (AbstractInsnNode insnNode : insnlist)
             {
-                if (insnNode instanceof FieldInsnNode min)
+                if (insnNode instanceof FieldInsnNode)
                 {
+                    final FieldInsnNode min = (FieldInsnNode) insnNode;
 
                     if (searchName == null && searchOwner == null && searchDesc == null)
                         continue;

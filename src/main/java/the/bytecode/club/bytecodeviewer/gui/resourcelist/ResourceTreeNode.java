@@ -21,8 +21,6 @@ package the.bytecode.club.bytecodeviewer.gui.resourcelist;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreeNode;
-
-import java.io.Serial;
 import java.util.Comparator;
 import java.util.HashMap;
 
@@ -33,7 +31,6 @@ import java.util.HashMap;
 public class ResourceTreeNode extends DefaultMutableTreeNode
 {
 
-    @Serial
     private static final long serialVersionUID = -8817777566176729571L;
 
     private static final int CHILD_MAP_BUILD_THRESHOLD = 3;

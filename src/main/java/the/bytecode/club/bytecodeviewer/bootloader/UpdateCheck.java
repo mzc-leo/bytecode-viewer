@@ -96,7 +96,7 @@ public class UpdateCheck implements Runnable
     {
         try
         {
-            HTTPRequest r = new HTTPRequest(URI.create("https://raw.githubusercontent.com/Konloch/bytecode-viewer/master/VERSION").toURL());
+            HTTPRequest r = new HTTPRequest(new URL("https://raw.githubusercontent.com/Konloch/bytecode-viewer/master/VERSION"));
             final Version version = Version.parseVersion(r.readSingle());
             final Version localVersion = Version.parseVersion(VERSION);
 
@@ -106,7 +106,7 @@ public class UpdateCheck implements Runnable
                 if (Version.compare(localVersion, version) > 0)
                     return;
             }
-            catch (Exception _)
+            catch (Exception ignored)
             {
             }
 
@@ -207,7 +207,7 @@ public class UpdateCheck implements Runnable
                 }
 
             }
-            catch (FileNotFoundException _)
+            catch (FileNotFoundException ex)
             {
                 //ignore 404s
             }
@@ -256,7 +256,7 @@ public class UpdateCheck implements Runnable
                 if (mbs % 5 == 0 && mbs != 0)
                 {
                     if (!flag)
-                        IO.println("Downloaded " + mbs + "MBs so far");
+                        System.out.println("Downloaded " + mbs + "MBs so far");
                     flag = true;
                 }
                 else
