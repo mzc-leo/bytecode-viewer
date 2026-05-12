@@ -137,6 +137,7 @@ public class BytecodeViewer
     public static List<Process> createdProcesses = new ArrayList<>();
 
     //Security Manager for dynamic analysis debugging
+    @SuppressWarnings("removal")
     public static SecurityMan sm = new SecurityMan();
 
     //GSON Reference
@@ -151,6 +152,15 @@ public class BytecodeViewer
     private static final Thread INSTALL_FAT_JAR = new Thread(new InstallFatJar(), "Install Fat-Jar");
     private static final Thread BOOT_CHECK = new Thread(new BootCheck(), "Boot Check");
     private static final TaskManager TASK_MANAGER = new TaskManager();
+
+    /**
+     * Wrapper to suppress removal warnings for SecurityManager API
+     */
+    @SuppressWarnings("removal")
+    private static void setSecurityManagerCompat(SecurityManager sm)
+    {
+        System.setSecurityManager(sm);
+    }
 
     /**
      * Main startup
@@ -172,7 +182,7 @@ public class BytecodeViewer
         // Set the security manager
         try
         {
-            System.setSecurityManager(sm);
+            setSecurityManagerCompat(sm);
         }
         catch (Throwable t)
         {
