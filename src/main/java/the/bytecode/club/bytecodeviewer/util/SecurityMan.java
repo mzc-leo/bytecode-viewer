@@ -38,8 +38,11 @@ import java.util.concurrent.atomic.AtomicInteger;
  * An awesome security manager.
  *
  * @author Konloch
+ * @deprecated SecurityManager was removed in Java 24+. This class is kept for reference
+ * but should not be instantiated or used in Java 24+ environments.
  */
-
+@Deprecated
+@SuppressWarnings("removal")
 public class SecurityMan extends SecurityManager
 {
     private static final boolean DISABLE_EXEC_SANDBOX = true;

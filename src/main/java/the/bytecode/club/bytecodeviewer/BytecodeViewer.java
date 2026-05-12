@@ -137,6 +137,8 @@ public class BytecodeViewer
     public static List<Process> createdProcesses = new ArrayList<>();
 
     //Security Manager for dynamic analysis debugging
+    //NOTE: SecurityManager was removed in Java 24+, this field is kept for reference but no longer functional
+    @Deprecated
     public static SecurityMan sm = new SecurityMan();
 
     //GSON Reference
@@ -170,16 +172,19 @@ public class BytecodeViewer
         System.out.println(" - https://bytecodeviewer.com\r\nCreated by @Konloch - https://konloch.com\r\nPresented by https://the.bytecode.club");
 
         // Set the security manager
-        try
-        {
-            System.setSecurityManager(sm);
-        }
-        catch (Throwable t)
-        {
-            System.err.println("Cannot set security manager! Are you on Java 18+ and have not enabled support for it?");
-            System.err.println("Because of this, you may be susceptible to some exploits!");
-            System.err.println("Either deal with it or allow it using the -Djava.security.manager=allow parameter.");
-        }
+        // NOTE: SecurityManager was removed in Java 24+ and throws UnsupportedOperationException
+        // The sandboxes (DISABLE_EXEC_SANDBOX and DISABLE_DISK_WRITE_SANDBOX) were already disabled,
+        // so this call was not providing security value.
+        // try
+        // {
+        //     System.setSecurityManager(sm);
+        // }
+        // catch (Throwable t)
+        // {
+        //     System.err.println("Cannot set security manager! Are you on Java 18+ and have not enabled support for it?");
+        //     System.err.println("Because of this, you may be susceptible to some exploits!");
+        //     System.err.println("Either deal with it or allow it using the -Djava.security.manager=allow parameter.");
+        // }
 
         //init the CLI
         CLI.init(launchArgs);
