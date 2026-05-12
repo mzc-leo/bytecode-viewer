@@ -14,8 +14,6 @@
 [INFO] --- compiler:3.14.1:compile (default-compile) @ Bytecode-Viewer ---
 [INFO] Recompiling the module because of changed source code.
 [INFO] Compiling 300 source files with javac [debug deprecation target 25] to target/classes
-[WARNING] /data/code/src/main/java/the/bytecode/club/bytecodeviewer/BytecodeViewer.java:[175,19] setSecurityManager(java.lang.SecurityManager) in java.lang.System has been deprecated and marked for removal
-[WARNING] /data/code/src/main/java/the/bytecode/club/bytecodeviewer/util/SecurityMan.java:[43,34] java.lang.SecurityManager in java.lang has been deprecated and marked for removal
 [WARNING] /data/code/src/main/java/the/bytecode/club/bytecodeviewer/GlobalHotKeys.java:[127,33] the.bytecode.club.bytecodeviewer.util.JarUtils in the.bytecode.club.bytecodeviewer.util has been deprecated
 [WARNING] /data/code/src/main/java/the/bytecode/club/bytecodeviewer/GlobalHotKeys.java:[127,66] getLoadedClasses() in the.bytecode.club.bytecodeviewer.BytecodeViewer has been deprecated
 [WARNING] /data/code/src/main/java/the/bytecode/club/bytecodeviewer/api/ASMResourceUtil.java:[37,43] getLoadedClasses() in the.bytecode.club.bytecodeviewer.BytecodeViewer has been deprecated
@@ -49,6 +47,8 @@
 [WARNING] /data/code/src/main/java/the/bytecode/club/bytecodeviewer/compilers/impl/KrakatauAssembler.java:[70,13] the.bytecode.club.bytecodeviewer.util.JarUtils in the.bytecode.club.bytecodeviewer.util has been deprecated
 [WARNING] /data/code/src/main/java/the/bytecode/club/bytecodeviewer/compilers/impl/KrakatauAssembler.java:[70,46] getLoadedClasses() in the.bytecode.club.bytecodeviewer.BytecodeViewer has been deprecated
 [WARNING] /data/code/src/main/java/the/bytecode/club/bytecodeviewer/decompilers/bytecode/ClassNodeDecompiler.java:[119,47] blindlySearchForClassNode(java.lang.String) in the.bytecode.club.bytecodeviewer.BytecodeViewer has been deprecated
+[WARNING] /data/code/src/main/java/the/bytecode/club/bytecodeviewer/decompilers/impl/JavapDisassembler.java:[96,27] sm in the.bytecode.club.bytecodeviewer.BytecodeViewer has been deprecated
+[WARNING] /data/code/src/main/java/the/bytecode/club/bytecodeviewer/decompilers/impl/JavapDisassembler.java:[134,27] sm in the.bytecode.club.bytecodeviewer.BytecodeViewer has been deprecated
 [WARNING] /data/code/src/main/java/the/bytecode/club/bytecodeviewer/decompilers/impl/KrakatauDecompiler.java:[99,13] the.bytecode.club.bytecodeviewer.util.JarUtils in the.bytecode.club.bytecodeviewer.util has been deprecated
 [WARNING] /data/code/src/main/java/the/bytecode/club/bytecodeviewer/decompilers/impl/KrakatauDecompiler.java:[99,57] getLoadedClasses() in the.bytecode.club.bytecodeviewer.BytecodeViewer has been deprecated
 [WARNING] /data/code/src/main/java/the/bytecode/club/bytecodeviewer/decompilers/impl/KrakatauDisassembler.java:[64,9] the.bytecode.club.bytecodeviewer.util.JarUtils in the.bytecode.club.bytecodeviewer.util has been deprecated
@@ -62,7 +62,9 @@
 [WARNING] /data/code/src/main/java/the/bytecode/club/bytecodeviewer/gui/hexviewer/HexViewer.java:[249,30] java.awt.Event in java.awt has been deprecated
 [WARNING] /data/code/src/main/java/the/bytecode/club/bytecodeviewer/gui/hexviewer/HexViewer.java:[251,30] java.awt.Event in java.awt has been deprecated
 [WARNING] /data/code/src/main/java/the/bytecode/club/bytecodeviewer/gui/tabpopup/TabPopupEvent.java:[32,58] getModifiers() in java.awt.event.InputEvent has been deprecated
+[WARNING] /data/code/src/main/java/the/bytecode/club/bytecodeviewer/plugin/preinstalled/EZInjection.java:[240,27] sm in the.bytecode.club.bytecodeviewer.BytecodeViewer has been deprecated
 [WARNING] /data/code/src/main/java/the/bytecode/club/bytecodeviewer/plugin/preinstalled/EZInjection.java:[243,47] getLoadedClasses() in the.bytecode.club.bytecodeviewer.BytecodeViewer has been deprecated
+[WARNING] /data/code/src/main/java/the/bytecode/club/bytecodeviewer/plugin/preinstalled/EZInjection.java:[283,51] sm in the.bytecode.club.bytecodeviewer.BytecodeViewer has been deprecated
 [WARNING] /data/code/src/main/java/the/bytecode/club/bytecodeviewer/resources/ResourceDecompiling.java:[98,17] the.bytecode.club.bytecodeviewer.util.JarUtils in the.bytecode.club.bytecodeviewer.util has been deprecated
 [WARNING] /data/code/src/main/java/the/bytecode/club/bytecodeviewer/resources/ResourceDecompiling.java:[98,61] getLoadedClasses() in the.bytecode.club.bytecodeviewer.BytecodeViewer has been deprecated
 [WARNING] /data/code/src/main/java/the/bytecode/club/bytecodeviewer/resources/exporting/impl/APKExport.java:[118,29] the.bytecode.club.bytecodeviewer.util.JarUtils in the.bytecode.club.bytecodeviewer.util has been deprecated
@@ -79,6 +81,6 @@
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  48.604 s
-[INFO] Finished at: 2026-05-12T09:03:31Z
+[INFO] Total time:  47.313 s
+[INFO] Finished at: 2026-05-12T09:06:05Z
 [INFO] ------------------------------------------------------------------------
