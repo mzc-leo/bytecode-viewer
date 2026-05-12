@@ -72,8 +72,9 @@ public class ReplaceStrings extends Plugin
         {
             FieldNode f = (FieldNode) o;
             Object v = f.value;
-            if (v instanceof String s)
+            if (v instanceof String)
             {
+                String s = (String) v;
 
                 if (contains)
                 {
@@ -87,11 +88,11 @@ public class ReplaceStrings extends Plugin
                 }
             }
 
-            if (v instanceof String[] strings)
+            if (v instanceof String[])
             {
-                for (int i = 0; i < strings.length; i++)
+                for (int i = 0; i < ((String[]) v).length; i++)
                 {
-                    String s = strings[i];
+                    String s = ((String[]) v)[i];
 
                     if (contains)
                     {
@@ -122,16 +123,17 @@ public class ReplaceStrings extends Plugin
 
             for (AbstractInsnNode a : iList.toArray())
             {
-                if (a instanceof LdcInsnNode node)
+                if (a instanceof LdcInsnNode)
                 {
-                    if (node.cst instanceof String s)
+                    if (((LdcInsnNode) a).cst instanceof String)
                     {
+                        final String s = (String) ((LdcInsnNode) a).cst;
 
                         if (contains)
                         {
                             if (s.contains(originalLDC))
                             {
-                                ((LdcInsnNode) a).cst = s.replaceAll(originalLDC, newLDC);
+                                ((LdcInsnNode) a).cst = ((String) ((LdcInsnNode) a).cst).replaceAll(originalLDC, newLDC);
                                 String ugh = s.replaceAll("\\n", "\\\\n").replaceAll("\\r", "\\\\r");
                                 frame.appendText(classNode.name + "." + m.name + "" + m.desc + " -> \"" + ugh + "\" replaced with \"" + s.replaceAll(originalLDC, newLDC).replaceAll("\\n", "\\\\n").replaceAll("\\r", "\\\\r") + "\"");
                             }

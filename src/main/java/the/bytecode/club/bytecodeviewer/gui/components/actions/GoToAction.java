@@ -57,7 +57,7 @@ public class GoToAction extends AbstractAction
                     return;
                 }
 
-                ClassFieldLocation first = fields.getFirst();
+                ClassFieldLocation first = fields.get(0);
                 int startOffset = root.getElement(first.line - 1).getStartOffset() + (first.columnStart - 1);
                 textArea.setCaretPosition(startOffset);
             }
@@ -184,18 +184,18 @@ public class GoToAction extends AbstractAction
 
         if (field)
         {
-            ClassFieldLocation fieldLocation = container.getFieldLocationsFor(lexeme).getFirst();
+            ClassFieldLocation fieldLocation = container.getFieldLocationsFor(lexeme).get(0);
             String className = container.getClassForField(lexeme);
-            ClassReferenceLocation referenceLocation = container.getClassReferenceLocationsFor(fieldLocation.owner).getFirst();
+            ClassReferenceLocation referenceLocation = container.getClassReferenceLocationsFor(fieldLocation.owner).get(0);
 
             // If the field we want to go to wasn't an expression like Class.field. For example param.field or
             // variable.field
             if (className.isEmpty())
             {
-                ClassFieldLocation classFieldLocation = container.getFieldLocationsFor(lexeme).getFirst();
+                ClassFieldLocation classFieldLocation = container.getFieldLocationsFor(lexeme).get(0);
                 className = classFieldLocation.owner;
                 ClassReferenceLocation classReferenceLocation =
-                    container.getClassReferenceLocationsFor(className).getFirst();
+                    container.getClassReferenceLocationsFor(className).get(0);
                 if (classReferenceLocation == null)
                     return null;
 
@@ -220,14 +220,14 @@ public class GoToAction extends AbstractAction
         }
         else if (method)
         {
-            ClassMethodLocation classMethodLocation = container.getMethodLocationsFor(lexeme).getFirst();
+            ClassMethodLocation classMethodLocation = container.getMethodLocationsFor(lexeme).get(0);
             ClassReferenceLocation classReferenceLocation = null;
 
             try
             {
-                classReferenceLocation = container.getClassReferenceLocationsFor(classMethodLocation.owner).getFirst();
+                classReferenceLocation = container.getClassReferenceLocationsFor(classMethodLocation.owner).get(0);
             }
-            catch (Exception _)
+            catch (Exception ignored)
             {
             }
 
@@ -250,7 +250,7 @@ public class GoToAction extends AbstractAction
         }
         else
         {
-            ClassReferenceLocation classReferenceLocation = container.getClassReferenceLocationsFor(lexeme).getFirst();
+            ClassReferenceLocation classReferenceLocation = container.getClassReferenceLocationsFor(lexeme).get(0);
             String packagePath = classReferenceLocation.packagePath;
 
             String resourceName = lexeme;
@@ -352,7 +352,7 @@ public class GoToAction extends AbstractAction
         try
         {
             BytecodeViewer.updateBusyStatus(true);
-            Thread.getAllStackTraces().forEach((name, _) ->
+            Thread.getAllStackTraces().forEach((name, stackTrace) ->
             {
                 if (name.getName().equals("Pane Update"))
                 {
@@ -402,8 +402,9 @@ public class GoToAction extends AbstractAction
 
                 for (CaretListener caretListener : panel.textArea.getCaretListeners())
                 {
-                    if (caretListener instanceof BytecodeViewPanelUpdater.MarkerCaretListener markerCaretListener)
+                    if (caretListener instanceof BytecodeViewPanelUpdater.MarkerCaretListener)
                     {
+                        BytecodeViewPanelUpdater.MarkerCaretListener markerCaretListener = (BytecodeViewPanelUpdater.MarkerCaretListener) caretListener;
 
                         markerCaretListener.caretUpdate(new CaretEvent(panel.textArea)
                         {

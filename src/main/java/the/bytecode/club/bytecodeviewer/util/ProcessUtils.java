@@ -48,7 +48,7 @@ public class ProcessUtils
                 out.append(NL).append(line);
             }
         }
-        catch (IOException _)
+        catch (IOException ignore)
         {
         }
 
@@ -62,7 +62,7 @@ public class ProcessUtils
                 err.append(NL).append(line);
             }
         }
-        catch (IOException _)
+        catch (IOException ignore)
         {
         }
     }
@@ -87,7 +87,7 @@ public class ProcessUtils
                         out.append(NL).append(line);
                     }
                 }
-                catch (IOException _)
+                catch (IOException ignore)
                 {
                 }
                 catch (Exception e)
@@ -115,7 +115,7 @@ public class ProcessUtils
                         err.append(NL).append(line);
                     }
                 }
-                catch (IOException _)
+                catch (IOException ignore)
                 {
                 }
                 catch (Exception e)

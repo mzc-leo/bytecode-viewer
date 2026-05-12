@@ -34,7 +34,6 @@ import java.awt.*;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.Serial;
 import java.util.Objects;
 
 /**
@@ -87,7 +86,7 @@ public class SearchBoxPane extends TranslatedVisibleComponent
         typeBox = new JComboBox<>(typeModel);
         final JPanel searchOptPanel = new JPanel(new BorderLayout());
         searchOptPanel.setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
-        final ItemListener il = _ ->
+        final ItemListener il = arg0 ->
         {
             searchOptPanel.removeAll();
             searchType = (SearchType) typeBox.getSelectedItem();
@@ -113,7 +112,7 @@ public class SearchBoxPane extends TranslatedVisibleComponent
 
         optionPanel.add(sharedPanel, BorderLayout.CENTER);
 
-        search.addActionListener(_ -> search());
+        search.addActionListener(arg0 -> search());
 
         optionPanel.add(search, BorderLayout.SOUTH);
 
@@ -241,6 +240,5 @@ public class SearchBoxPane extends TranslatedVisibleComponent
         BytecodeViewer.viewer.viewPane3.setPaneEditable(editable3);
     }
 
-    @Serial
     private static final long serialVersionUID = -1098524689236993932L;
 }

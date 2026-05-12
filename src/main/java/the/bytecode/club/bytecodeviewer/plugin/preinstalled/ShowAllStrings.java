@@ -47,17 +47,18 @@ public class ShowAllStrings extends Plugin
                 FieldNode f = (FieldNode) o;
                 Object v = f.value;
 
-                if (v instanceof String s)
+                if (v instanceof String)
                 {
+                    String s = (String) v;
                     if (!s.isEmpty())
                         sb.append(classNode.name).append(".").append(f.name).append(f.desc).append(" -> \"").append(s.replaceAll("\\n", "\\\\n").replaceAll("\\r", "\\\\r")).append("\"").append(NL);
                 }
 
-                if (v instanceof String[] strings)
+                if (v instanceof String[])
                 {
-                    for (int i = 0; i < strings.length; i++)
+                    for (int i = 0; i < ((String[]) v).length; i++)
                     {
-                        String s = strings[i];
+                        String s = ((String[]) v)[i];
                         if (!s.isEmpty())
                             sb.append(classNode.name).append(".").append(f.name).append(f.desc).append("[").append(i).append("] -> \"").append(s.replaceAll("\\n", "\\\\n").replaceAll("\\r", "\\\\r")).append("\"").append(NL);
                     }
@@ -71,10 +72,11 @@ public class ShowAllStrings extends Plugin
 
                 for (AbstractInsnNode a : iList.toArray())
                 {
-                    if (a instanceof LdcInsnNode node)
+                    if (a instanceof LdcInsnNode)
                     {
-                        if (node.cst instanceof String s)
+                        if (((LdcInsnNode) a).cst instanceof String)
                         {
+                            final String s = (String) ((LdcInsnNode) a).cst;
                             if (!s.isEmpty())
                                 sb.append(classNode.name).append(".").append(m.name).append(m.desc).append(" -> \"").append(s.replaceAll("\\n", "\\\\n").replaceAll("\\r", "\\\\r")).append("\"").append(NL);
                         }

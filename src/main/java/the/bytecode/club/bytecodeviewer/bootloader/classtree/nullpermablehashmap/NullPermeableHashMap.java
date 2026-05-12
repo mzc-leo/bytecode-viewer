@@ -18,7 +18,6 @@
 
 package the.bytecode.club.bytecodeviewer.bootloader.classtree.nullpermablehashmap;
 
-import java.io.Serial;
 import java.util.HashMap;
 
 /**
@@ -28,7 +27,6 @@ import java.util.HashMap;
 public class NullPermeableHashMap<K, V> extends HashMap<K, V>
 {
 
-    @Serial
     private static final long serialVersionUID = 1L;
 
     private final ValueCreator<V> creator;

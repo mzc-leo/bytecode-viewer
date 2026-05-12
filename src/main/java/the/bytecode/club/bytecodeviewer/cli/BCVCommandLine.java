@@ -145,7 +145,7 @@ public class BCVCommandLine
             && !decompiler.equalsIgnoreCase("smali")
             && !decompiler.equalsIgnoreCase("asmifier"))
         {
-            IO.println("Error, no decompiler called '" + decompiler + "' found. Type -list" + " for the list");
+            System.out.println("Error, no decompiler called '" + decompiler + "' found. Type -list" + " for the list");
         }
 
         //TODO decompiling happens here

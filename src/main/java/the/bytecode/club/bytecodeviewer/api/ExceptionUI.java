@@ -28,7 +28,6 @@ import the.bytecode.club.bytecodeviewer.translation.TranslatedStrings;
 import java.awt.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Serial;
 import java.io.StringWriter;
 
 import static the.bytecode.club.bytecodeviewer.Constants.*;
@@ -103,7 +102,7 @@ public class ExceptionUI extends JFrameConsole
 
             setupFrame(sw.toString(), author);
         }
-        catch (IOException _)
+        catch (IOException ignored)
         {
         }
     }
@@ -147,6 +146,5 @@ public class ExceptionUI extends JFrameConsole
             + ", Java: " + System.getProperty("java.version");
     }
 
-    @Serial
     private static final long serialVersionUID = -5230501978224926296L;
 }

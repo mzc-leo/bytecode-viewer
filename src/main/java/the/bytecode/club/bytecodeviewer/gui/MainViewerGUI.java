@@ -358,19 +358,19 @@ public class MainViewerGUI extends JFrame
 
         saveAsZip.setActionCommand("");
 
-        addResource.addActionListener(_ -> selectFile());
-        newWorkSpace.addActionListener(_ -> BytecodeViewer.resetWorkspace(true));
-        reloadResources.addActionListener(_ -> reloadResources());
-        runButton.addActionListener(_ -> runResources());
-        compileButton.addActionListener(_ -> compileOnNewThread());
-        saveAsRunnableJar.addActionListener(_ -> Export.RUNNABLE_JAR.getExporter().promptForExport());
-        saveAsAPK.addActionListener(_ -> Export.APK.getExporter().promptForExport());
-        saveAsDex.addActionListener(_ -> Export.DEX.getExporter().promptForExport());
-        saveAsZip.addActionListener(_ -> Export.ZIP.getExporter().promptForExport());
-        decompileSaveAll.addActionListener(_ -> ResourceDecompiling.decompileSaveAll());
-        decompileSaveOpened.addActionListener(_ -> ResourceDecompiling.decompileSaveOpenedResource());
-        about.addActionListener(_ -> new AboutWindow().setVisible(true));
-        exit.addActionListener(_ -> askBeforeExiting());
+        addResource.addActionListener(e -> selectFile());
+        newWorkSpace.addActionListener(e -> BytecodeViewer.resetWorkspace(true));
+        reloadResources.addActionListener(arg0 -> reloadResources());
+        runButton.addActionListener(e -> runResources());
+        compileButton.addActionListener(arg0 -> compileOnNewThread());
+        saveAsRunnableJar.addActionListener(e -> Export.RUNNABLE_JAR.getExporter().promptForExport());
+        saveAsAPK.addActionListener(arg0 -> Export.APK.getExporter().promptForExport());
+        saveAsDex.addActionListener(arg0 -> Export.DEX.getExporter().promptForExport());
+        saveAsZip.addActionListener(arg0 -> Export.ZIP.getExporter().promptForExport());
+        decompileSaveAll.addActionListener(arg0 -> ResourceDecompiling.decompileSaveAll());
+        decompileSaveOpened.addActionListener(arg0 -> ResourceDecompiling.decompileSaveOpenedResource());
+        about.addActionListener(arg0 -> new AboutWindow().setVisible(true));
+        exit.addActionListener(arg0 -> askBeforeExiting());
     }
 
     public void buildViewMenu()
@@ -445,7 +445,7 @@ public class MainViewerGUI extends JFrame
         apkConversionGroup.add(apkConversionEnjarify);
         apkConversionGroup.setSelected(apkConversionDex.getModel(), true);
         //apkConversionSettingsDialog = new SettingsDialogue(apkConversionSecondaryMenu, new JPanel());
-        apkConversionSettings.addActionListener(_ -> apkConversionSettingsDialog.showDialog());
+        apkConversionSettings.addActionListener((e) -> apkConversionSettingsDialog.showDialog());
 
         ButtonGroup rstaGroup = new ButtonGroup();
         for (RSTATheme t : RSTATheme.values())
@@ -456,7 +456,7 @@ public class MainViewerGUI extends JFrame
 
             rstaGroup.add(item);
 
-            item.addActionListener(_ ->
+            item.addActionListener(e ->
             {
                 Configuration.rstaTheme = t;
                 item.setSelected(true);
@@ -469,7 +469,7 @@ public class MainViewerGUI extends JFrame
         }
 
         rstaThemeSettingsDialog = new SettingsDialog(rstaTheme, new JPanel());
-        rstaThemeSettings.addActionListener(_ -> rstaThemeSettingsDialog.showDialog());
+        rstaThemeSettings.addActionListener((e) -> rstaThemeSettingsDialog.showDialog());
 
         ButtonGroup lafGroup = new ButtonGroup();
         for (LAFTheme theme : LAFTheme.values())
@@ -480,7 +480,7 @@ public class MainViewerGUI extends JFrame
 
             lafGroup.add(item);
 
-            item.addActionListener(_ ->
+            item.addActionListener(e ->
             {
                 Configuration.lafTheme = theme;
                 Configuration.rstaTheme = theme.getRSTATheme();
@@ -504,7 +504,7 @@ public class MainViewerGUI extends JFrame
         }
 
         lafThemeSettingsDialog = new SettingsDialog(lafTheme, new JPanel());
-        lafThemeSettings.addActionListener(_ -> lafThemeSettingsDialog.showDialog());
+        lafThemeSettings.addActionListener((e) -> lafThemeSettingsDialog.showDialog());
 
         ButtonGroup languageGroup = new ButtonGroup();
         for (Language l : Language.values())
@@ -515,7 +515,7 @@ public class MainViewerGUI extends JFrame
 
             languageGroup.add(item);
 
-            item.addActionListener(_ ->
+            item.addActionListener(e ->
             {
                 SettingsSerializer.saveSettingsAsync();
                 MiscUtils.setLanguage(l);
@@ -526,7 +526,7 @@ public class MainViewerGUI extends JFrame
         }
 
         languageSettingsDialog = new SettingsDialog(language, new JPanel());
-        languageSettings.addActionListener(_ -> languageSettingsDialog.showDialog());
+        languageSettings.addActionListener((e) -> languageSettingsDialog.showDialog());
 
         visualSettings.add(useNewSettingsDialog ? lafThemeSettings : lafTheme);
         visualSettings.add(useNewSettingsDialog ? rstaThemeSettings : rstaTheme);
@@ -554,7 +554,7 @@ public class MainViewerGUI extends JFrame
         procyonSettingsSecondaryMenu.add(retainRedunantCasts);
         procyonSettingsSecondaryMenu.add(unicodeOutputEnabled);
         procyonSettingsDialog = new SettingsDialog(procyonSettingsSecondaryMenu, new JPanel());
-        procyonSettings.addActionListener(_ -> procyonSettingsDialog.showDialog());
+        procyonSettings.addActionListener((e) -> procyonSettingsDialog.showDialog());
 
         //CFR SETTINGS
         settingsMainMenu.add(useNewSettingsDialog ? cfrSettings : cfrSettingsSecondaryMenu);
@@ -603,7 +603,7 @@ public class MainViewerGUI extends JFrame
         cfrSettingsSecondaryMenu.add(forceTurningIFs);
         cfrSettingsSecondaryMenu.add(forLoopAGGCapture);
         cfrSettingsDialog = new SettingsDialog(cfrSettingsSecondaryMenu, new JPanel());
-        cfrSettings.addActionListener(_ -> cfrSettingsDialog.showDialog());
+        cfrSettings.addActionListener((e) -> cfrSettingsDialog.showDialog());
 
         //FERNFLOWER SETTINGS
         settingsMainMenu.add(useNewSettingsDialog ? fernFlowerSettings : fernFlowerSettingsSecondaryMenu);
@@ -627,7 +627,7 @@ public class MainViewerGUI extends JFrame
         fernFlowerSettingsSecondaryMenu.add(fdi);
         fernFlowerSettingsSecondaryMenu.add(asc);
         fernFlowerSettingsDialog = new SettingsDialog(fernFlowerSettingsSecondaryMenu, new JPanel());
-        fernFlowerSettings.addActionListener(_ -> fernFlowerSettingsDialog.showDialog());
+        fernFlowerSettings.addActionListener((e) -> fernFlowerSettingsDialog.showDialog());
 
         //CFIDE SETTINGS
         settingsMainMenu.add(useNewSettingsDialog ? bytecodeDecompilerSettings : bytecodeDecompilerSettingsSecondaryMenu);
@@ -635,22 +635,22 @@ public class MainViewerGUI extends JFrame
         bytecodeDecompilerSettingsSecondaryMenu.add(appendBracketsToLabels);
         bytecodeDecompilerSettingsSecondaryMenu.add(printLineNumbers);
         bytecodeDecompilerSettingsDialog = new SettingsDialog(bytecodeDecompilerSettingsSecondaryMenu, new JPanel());
-        bytecodeDecompilerSettings.addActionListener(_ -> bytecodeDecompilerSettingsDialog.showDialog());
+        bytecodeDecompilerSettings.addActionListener((e) -> bytecodeDecompilerSettingsDialog.showDialog());
 
-        deleteForeignOutdatedLibs.addActionListener(_ -> showForeignLibraryWarning());
-        forcePureAsciiAsText.addActionListener(_ -> SettingsSerializer.saveSettingsAsync());
-        setPython2.addActionListener(_ -> ExternalResources.getSingleton().selectPython2());
-        setJRERT.addActionListener(_ -> ExternalResources.getSingleton().selectJRERTLibrary());
-        setPython3.addActionListener(_ -> ExternalResources.getSingleton().selectPython3());
-        setOptionalLibrary.addActionListener(_ -> ExternalResources.getSingleton().selectOptionalLibraryFolder());
-        setJavac.addActionListener(_ -> ExternalResources.getSingleton().selectJavac());
-        showFileInTabTitle.addActionListener(_ ->
+        deleteForeignOutdatedLibs.addActionListener(arg0 -> showForeignLibraryWarning());
+        forcePureAsciiAsText.addActionListener(arg0 -> SettingsSerializer.saveSettingsAsync());
+        setPython2.addActionListener(arg0 -> ExternalResources.getSingleton().selectPython2());
+        setJRERT.addActionListener(arg0 -> ExternalResources.getSingleton().selectJRERTLibrary());
+        setPython3.addActionListener(arg0 -> ExternalResources.getSingleton().selectPython3());
+        setOptionalLibrary.addActionListener(arg0 -> ExternalResources.getSingleton().selectOptionalLibraryFolder());
+        setJavac.addActionListener(arg0 -> ExternalResources.getSingleton().selectJavac());
+        showFileInTabTitle.addActionListener(arg0 ->
         {
             Configuration.displayParentInTab = BytecodeViewer.viewer.showFileInTabTitle.isSelected();
             SettingsSerializer.saveSettingsAsync();
             BytecodeViewer.refreshAllTabTitles();
         });
-        simplifyNameInTabTitle.addActionListener(_ ->
+        simplifyNameInTabTitle.addActionListener(arg0 ->
         {
             Configuration.simplifiedTabNames = BytecodeViewer.viewer.simplifyNameInTabTitle.isSelected();
             SettingsSerializer.saveSettingsAsync();
@@ -688,21 +688,21 @@ public class MainViewerGUI extends JFrame
         //mnNewMenu_1.add(mntmStartZkmString);
         //pluginsMainMenu.add(zStringArrayDecrypter);
 
-        openExternalPlugin.addActionListener(_ -> openExternalPlugin());
-        newJavaPlugin.addActionListener(_ -> PluginTemplate.JAVA.openEditorExceptionHandled());
-        newJavascriptPlugin.addActionListener(_ -> PluginTemplate.JAVASCRIPT.openEditorExceptionHandled());
-        codeSequenceDiagram.addActionListener(_ -> CodeSequenceDiagram.open());
-        maliciousCodeScanner.addActionListener(_ -> MaliciousCodeScannerOptions.open());
-        showMainMethods.addActionListener(_ -> PluginManager.runPlugin(new ShowMainMethods()));
-        showAllStrings.addActionListener(_ -> PluginManager.runPlugin(new ShowAllStrings()));
-        replaceStrings.addActionListener(_ -> ReplaceStringsOptions.open());
-        stackFramesRemover.addActionListener(_ -> PluginManager.runPlugin(new StackFramesRemover()));
-        allatoriStringDecrypter.addActionListener(_ -> PluginManager.runPlugin(new AllatoriStringDecrypter.AllatoriStringDecrypterOptions()));
-        ZKMStringDecrypter.addActionListener(_ -> PluginManager.runPlugin(new ZKMStringDecrypter()));
-        zStringArrayDecrypter.addActionListener(_ -> PluginManager.runPlugin(new ZStringArrayDecrypter()));
-        viewAPKAndroidPermissions.addActionListener(_ -> PluginManager.runPlugin(new ViewAPKAndroidPermissions()));
-        viewManifest.addActionListener(_ -> PluginManager.runPlugin(new ViewManifest()));
-        changeClassFileVersions.addActionListener(_ -> PluginManager.runPlugin(new ChangeClassFileVersions()));
+        openExternalPlugin.addActionListener(arg0 -> openExternalPlugin());
+        newJavaPlugin.addActionListener(arg0 -> PluginTemplate.JAVA.openEditorExceptionHandled());
+        newJavascriptPlugin.addActionListener(arg0 -> PluginTemplate.JAVASCRIPT.openEditorExceptionHandled());
+        codeSequenceDiagram.addActionListener(arg0 -> CodeSequenceDiagram.open());
+        maliciousCodeScanner.addActionListener(e -> MaliciousCodeScannerOptions.open());
+        showMainMethods.addActionListener(e -> PluginManager.runPlugin(new ShowMainMethods()));
+        showAllStrings.addActionListener(e -> PluginManager.runPlugin(new ShowAllStrings()));
+        replaceStrings.addActionListener(arg0 -> ReplaceStringsOptions.open());
+        stackFramesRemover.addActionListener(e -> PluginManager.runPlugin(new StackFramesRemover()));
+        allatoriStringDecrypter.addActionListener(e -> PluginManager.runPlugin(new AllatoriStringDecrypter.AllatoriStringDecrypterOptions()));
+        ZKMStringDecrypter.addActionListener(e -> PluginManager.runPlugin(new ZKMStringDecrypter()));
+        zStringArrayDecrypter.addActionListener(arg0 -> PluginManager.runPlugin(new ZStringArrayDecrypter()));
+        viewAPKAndroidPermissions.addActionListener(arg0 -> PluginManager.runPlugin(new ViewAPKAndroidPermissions()));
+        viewManifest.addActionListener(arg0 -> PluginManager.runPlugin(new ViewManifest()));
+        changeClassFileVersions.addActionListener(arg0 -> PluginManager.runPlugin(new ChangeClassFileVersions()));
     }
 
     public void defaultSettings()
@@ -838,8 +838,8 @@ public class MainViewerGUI extends JFrame
                 if (waitIcons.isEmpty())
                     return;
 
-                JMenuItem waitIcon = waitIcons.getFirst();
-                waitIcons.removeFirst();
+                JMenuItem waitIcon = waitIcons.get(0);
+                waitIcons.remove(0);
                 rootMenu.remove(waitIcon);
 
                 //re-enable the Refresh Button incase it gets stuck

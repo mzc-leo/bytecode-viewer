@@ -20,7 +20,6 @@ package the.bytecode.club.bytecodeviewer.gui.components;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.Serial;
 
 /**
  * @author Konloch
@@ -48,6 +47,5 @@ public class MaxWidthJLabel extends JLabel
             return realDimension;
     }
 
-    @Serial
     private static final long serialVersionUID = -5511025206527893360L;
 }

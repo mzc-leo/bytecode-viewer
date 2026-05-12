@@ -24,8 +24,6 @@ import the.bytecode.club.bytecodeviewer.util.MiscUtils;
 
 import javax.swing.*;
 
-import java.io.Serial;
-
 /**
  * Represents an opened tab
  *
@@ -77,6 +75,5 @@ public abstract class ResourceViewer extends JPanel
         //    tabbedPane.label.setText(getTabName());
     }
 
-    @Serial
     private static final long serialVersionUID = -2965538493489119191L;
 }

@@ -30,8 +30,9 @@ class MethodCallParser
             variable.method -> variable
             parameter.method -> parameter
              */
-            if (scope instanceof NameExpr nameExpr)
+            if (scope instanceof NameExpr)
             {
+                NameExpr nameExpr = (NameExpr) scope;
                 Range range = nameExpr.getName().getRange().orElse(null);
                 if (range == null)
                     return;
@@ -42,7 +43,7 @@ class MethodCallParser
                 {
                     putResolvedValues(container, "reference", method, nameExpr, scopeValue);
                 }
-                catch (UnsolvedSymbolException _)
+                catch (UnsolvedSymbolException ignored)
                 {
                     try
                     {
@@ -58,8 +59,9 @@ class MethodCallParser
         // Ex. method(arg, arg, ...)
         expr.getArguments().forEach(argument ->
         {
-            if (argument instanceof NameExpr nameExpr)
+            if (argument instanceof NameExpr)
             {
+                NameExpr nameExpr = (NameExpr) argument;
                 Range range = nameExpr.getName().getRange().orElse(null);
                 if (range == null)
                     return;
@@ -86,8 +88,9 @@ class MethodCallParser
             parameter.method -> parameter
              */
             Expression scope = expr.getScope().orElse(null);
-            if (scope instanceof NameExpr nameExpr)
+            if (scope instanceof NameExpr)
             {
+                NameExpr nameExpr = (NameExpr) scope;
                 Range range = nameExpr.getName().getRange().orElse(null);
                 if (range == null)
                 {
@@ -98,7 +101,7 @@ class MethodCallParser
 
                 try {
                     putResolvedValues(container, "reference", nameExpr, scopeValue);
-                } catch (UnsolvedSymbolException _)
+                } catch (UnsolvedSymbolException ignored)
                 {
                     try
                     {
@@ -113,8 +116,9 @@ class MethodCallParser
 
         expr.getArguments().forEach(argument ->
         {
-            if (argument instanceof NameExpr nameExpr)
+            if (argument instanceof NameExpr)
             {
+                NameExpr nameExpr = (NameExpr) argument;
                 Range range = nameExpr.getName().getRange().orElse(null);
                 if (range == null)
                 {

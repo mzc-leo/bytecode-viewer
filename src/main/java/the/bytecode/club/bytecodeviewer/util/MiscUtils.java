@@ -98,7 +98,7 @@ public class MiscUtils
             String line;
             while ((line = br.readLine()) != null)
             {
-                IO.println(line);
+                System.out.println(line);
             }
         }
 
@@ -109,7 +109,7 @@ public class MiscUtils
             String line;
             while ((line = br.readLine()) != null)
             {
-                IO.println(line);
+                System.out.println(line);
             }
         }
     }
@@ -303,7 +303,7 @@ public class MiscUtils
         list.addAll(temporaryList);
 
         while (list.size() > maxLength)
-            list.removeLast();
+            list.remove(list.size() - 1);
     }
 
     /**

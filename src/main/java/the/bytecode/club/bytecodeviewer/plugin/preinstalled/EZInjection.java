@@ -126,7 +126,7 @@ public class EZInjection extends Plugin
 
     public static void print(String message)
     {
-        IO.println(message);
+        System.out.println(message);
     }
 
     @Override
@@ -224,7 +224,7 @@ public class EZInjection extends Plugin
                 String[] split = proxy.split(":");
                 setProxy(split[0], split[1]);
             }
-            catch (Exception _)
+            catch (Exception e)
             {
                 // ignore
             }

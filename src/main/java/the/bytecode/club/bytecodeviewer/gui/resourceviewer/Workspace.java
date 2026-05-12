@@ -34,7 +34,6 @@ import the.bytecode.club.bytecodeviewer.gui.tabpopup.closer.PopupMenuTabsCloseCo
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.Serial;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
@@ -63,7 +62,7 @@ public class Workspace extends TranslatedVisibleComponent
 
         this.tabs = new DraggableTabbedPane();
 
-        tabs.addChangeListener(_ ->
+        tabs.addChangeListener(e ->
         {
             ResourceViewer viewer = (ResourceViewer) tabs.getSelectedComponent();
 
@@ -94,7 +93,7 @@ public class Workspace extends TranslatedVisibleComponent
 
         getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 
-        tabs.addChangeListener(_ -> buttonPanel.setVisible(tabs.getSelectedIndex() != -1));
+        tabs.addChangeListener(arg0 -> buttonPanel.setVisible(tabs.getSelectedIndex() != -1));
 
         this.setVisible(true);
     }
@@ -199,6 +198,5 @@ public class Workspace extends TranslatedVisibleComponent
         tabs.updateUI();
     }
 
-    @Serial
     private static final long serialVersionUID = 6542337997679487946L;
 }

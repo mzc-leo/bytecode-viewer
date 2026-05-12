@@ -55,7 +55,7 @@ public class DirectoryLoader implements Loader
         {
             return IOUtils.toByteArray(bis);
         }
-        catch (IOException _)
+        catch (IOException e)
         {
             throw new LoaderException("'" + file.getAbsolutePath() + "'  not found.");
         }

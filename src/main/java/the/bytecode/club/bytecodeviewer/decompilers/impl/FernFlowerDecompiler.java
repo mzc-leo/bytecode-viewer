@@ -211,7 +211,7 @@ public class FernFlowerDecompiler extends AbstractDecompiler
         {
             ConsoleDecompiler.main(generateMainMethod(tempInputJarFile.getAbsolutePath(), TEMP_DIRECTORY + "temp"));
         }
-        catch (StackOverflowError | Exception _)
+        catch (StackOverflowError | Exception ignored)
         {
         }
 

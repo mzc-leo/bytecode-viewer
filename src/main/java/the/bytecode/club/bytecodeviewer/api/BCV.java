@@ -344,7 +344,7 @@ public class BCV
     public static void log(boolean devModeOnly, String s)
     {
         if (!devModeOnly || DEV_MODE)
-            IO.println(s);
+            System.out.println(s);
     }
 
     /**

@@ -23,6 +23,6 @@ public class CleanBootCommand extends CLICommand
     {
         new File(Constants.getBCVDirectory()).delete();
 
-        IO.println("BCV Directory Deleted - Continuing to GUI...");
+        System.out.println("BCV Directory Deleted - Continuing to GUI...");
     }
 }
